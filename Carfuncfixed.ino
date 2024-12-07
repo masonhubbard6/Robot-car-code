@@ -20,7 +20,9 @@ int vitesse = 50; // Initial speed
 #define BACKTURNLEFT_CODE 3910598400
 #define BACKTURNRIGHT_CODE 4061003520
 
-void forward(int speed) {
+//declare the functions
+
+void forward(int speed) { 
   digitalWrite(STBY, 1);  
   digitalWrite(AIN1, 1);  
   digitalWrite(BIN1, 1);  
@@ -102,11 +104,11 @@ void slowdown() {
 } 
 
 void setup() {  
-  pinMode(STBY, OUTPUT);
+  pinMode(STBY, OUTPUT); //Declare as outputs
   pinMode(AIN1, OUTPUT);
   pinMode(BIN1, OUTPUT);
   
-  Serial.begin(9600);  
+  Serial.begin(9600);  // initialize serial communication
 
   IrReceiver.begin(IR_RECEIVE_PIN, ENABLE_LED_FEEDBACK); // Initialize the receiver  
 
