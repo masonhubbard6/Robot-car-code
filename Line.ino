@@ -1,21 +1,21 @@
-int leftMotorPin = 7;
+int leftMotorPin = 7; //declare the pins to be used
 int rightMotorPin = 8;
 int leftMotorSpeed = 5;
 int rightMotorSpeed = 6;
 int enablePin = 3;
 
 void setup() { 
-  Serial.begin(9600); 
-  pinMode(leftMotorPin, OUTPUT);
+  Serial.begin(9600); //serial communication
+  pinMode(leftMotorPin, OUTPUT);//declare as outputs
   pinMode(rightMotorPin, OUTPUT);
   pinMode(enablePin, OUTPUT);
 } 
 
 void loop() { 
-  int rightSensor = analogRead(A0); 
+  int rightSensor = analogRead(A0); //declare the sensors as analog inputs
   int middleSensor = analogRead(A1); 
   int leftSensor = analogRead(A2); 
-
+//check conditions then call the corosplnding functions
   if (rightSensor > 1000 && middleSensor > 1000 && leftSensor > 1000 ) { 
     stopMotors(0); 
   } 
@@ -31,7 +31,7 @@ void loop() {
   if (middleSensor < 600 && rightSensor < 600 && leftSensor < 600 ) { 
     makeUTurn(100); 
   } 
-
+//print out the results
   Serial.print("Right Sensor = ");
   Serial.print(rightSensor);
   Serial.print("\t");
@@ -49,7 +49,7 @@ void stopMotors(int speedValue) {
   analogWrite(rightMotorSpeed, speedValue);
   digitalWrite(enablePin, HIGH);
 } 
-
+//declare the functions values
 void makeUTurn(int speedValue) { 
   digitalWrite(leftMotorPin, HIGH); 
   analogWrite(leftMotorSpeed, speedValue); 
